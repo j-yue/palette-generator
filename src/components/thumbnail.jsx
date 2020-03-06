@@ -3,7 +3,8 @@ import React from "react";
 
 const styles = {
   height: "10vh",
-  borderRadius: "1rem"
+  borderRadius: "1rem",
+  marginBottom: ".5rem"
 };
 
 const Thumbnail = ({ src }) => {

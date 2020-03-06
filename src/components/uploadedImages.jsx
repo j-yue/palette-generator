@@ -17,15 +17,16 @@ const UploadedImages = () => {
       container
       direction="row"
       justify="space-between"
-      alignItems="flex-start"
-      style={{ height: "50vh", maxHeight: "50vh", overflowY: "auto" }}
+      alignItems="center"
+      style={{
+        height: "50vh",
+        maxHeight: "50vh",
+        overflowY: "auto",
+        paddingRight: ".5rem"
+      }}
     >
       {uploadedContext.imageArray.map(img => (
-        <Thumbnail
-          src={img}
-          style={{ marginBottom: "1rem" }}
-          key={img + key++}
-        />
+        <Thumbnail src={img} key={img + key++} />
       ))}
     </Grid>
   );

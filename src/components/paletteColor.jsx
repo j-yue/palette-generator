@@ -41,14 +41,12 @@ const toHex = rgb => {
 
 const style = {
   display: "inline-block",
-  width: "3rem",
-  borderRadius: "3rem",
-  height: "3rem"
+  width: "10vh",
+  borderRadius: "10vh",
+  height: "10vh"
 };
 
 const PaletteColor = ({ color }) => {
-  // console.log(color);
-  // console.log(toHex(color));
   return (
     <div
       style={{ backgroundColor: `rgb(${color})`, ...style }}

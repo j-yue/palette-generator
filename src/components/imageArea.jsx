@@ -1,14 +1,22 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
 import UploadButton from "./uploadButton";
 import UploadedImages from "./uploadedImages";
 
 const ImageArea = () => {
   return (
-    <Container style={{ height: "70vh" }}>
+    <Grid
+      container
+      direction="column"
+      justify="space-evenly"
+      alignItems="center"
+      style={{ height: "70vh", width: "100%" }}
+    >
       <UploadButton />
-      <UploadedImages />
-    </Container>
+      <Container>
+        <UploadedImages />
+      </Container>
+    </Grid>
   );
 };
 

@@ -34,12 +34,48 @@ class App extends Component {
         "images/kea.jpg",
         "images/sunConure.jpg",
         "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
         "images/sunConure.jpg"
       ],
-      selectedImage: "images/kea.jpg"
+      selectedImage: "images/kea.jpg" //what if the images have the same name?
     };
     //colorthief needs access to dom element containing img
     this.imgRef = React.createRef();
+  }
+
+  handleThumbnailClick(img) {
+    this.setState({ selectedImage: img });
   }
 
   render() {
