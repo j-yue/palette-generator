@@ -13,9 +13,9 @@ const ImageArea = () => {
       style={{ height: "70vh", width: "100%" }}
     >
       <UploadButton />
-      <Container>
-        <UploadedImages />
-      </Container>
+      {/* <Container> */}
+      <UploadedImages />
+      {/* </Container> */}
     </Grid>
   );
 };

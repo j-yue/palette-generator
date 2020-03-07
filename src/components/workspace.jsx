@@ -25,9 +25,13 @@ class Workspace extends Component {
 
   render() {
     return (
-      <Paper variant="outlined" style={{ height: "100vh", width: "70vw" }}>
-        <CurrentImage handleImageLoad={this.handleImageLoad} />
-        <Palette dominant={this.state.dominant} palette={this.state.palette} />
+      <Paper
+        variant="outlined"
+        style={{ height: "100%", width: "100%" }}
+        // style={{ height: "100vh", width: "70vw" }}
+      >
+        {/* <CurrentImage handleImageLoad={this.handleImageLoad} />
+        <Palette dominant={this.state.dominant} palette={this.state.palette} /> */}
       </Paper>
     );
   }

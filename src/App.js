@@ -9,6 +9,7 @@ import {
 // import { orange } from "@material-ui/core/colors";
 import ImagesContext from "./context/imagesContext";
 import SelectionContext from "./context/selectionContext";
+import ClipboardContext from "./context/clipboardContext";
 // import CurrentImage from "./components/currentImage";
 import Workspace from "./components/workspace";
 import Actions from "./components/actions";
@@ -34,41 +35,9 @@ class App extends Component {
         "images/kea.jpg",
         "images/sunConure.jpg",
         "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
         "images/sunConure.jpg"
       ],
-      selectedImage: "images/kea.jpg" //what if the images have the same name?
+      selectedImage: "images/sunConure.jpg" //what if the images have the same name?
     };
     //colorthief needs access to dom element containing img
     this.imgRef = React.createRef();
@@ -82,15 +51,33 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Grid container direction="row" justify="center" alignItems="center">
-          <SelectionContext.Provider
-            value={{ selectedImage: this.state.selectedImage }}
-          >
-            <Workspace />
-          </SelectionContext.Provider>
-          <ImagesContext.Provider value={{ imageArray: this.state.imageArray }}>
-            <Actions />
-          </ImagesContext.Provider>
+        <Grid
+          // nowrap
+          container
+          // xs={10}
+          // xs={10}
+          // spacing={5}
+          style={{
+            width: "100vw",
+            height: "100vh",
+            overflow: "hidden",
+            margin: "0"
+          }}
+        >
+          <Grid item xs={8}>
+            <SelectionContext.Provider
+              value={{ selectedImage: this.state.selectedImage }}
+            >
+              <Workspace />
+            </SelectionContext.Provider>
+          </Grid>
+          <Grid item xs={4}>
+            <ImagesContext.Provider
+              value={{ imageArray: this.state.imageArray }}
+            >
+              <Actions />
+            </ImagesContext.Provider>
+          </Grid>
         </Grid>
       </MuiThemeProvider>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from "@material-ui/core/Button";
 //match numbers > 9 to their hex value
 const decToHex = num => {
   let result = parseInt(num);
@@ -47,11 +47,15 @@ const style = {
 };
 
 const PaletteColor = ({ color }) => {
+  const colorHex = toHex(color);
   return (
-    <div
-      style={{ backgroundColor: `rgb(${color})`, ...style }}
+    <Button
+      variant="contained"
+      style={{ color: colorHex, backgroundColor: colorHex, ...style }}
       onClick={() => console.log(color)}
-    ></div>
+    >
+      *
+    </Button>
   );
 };
 

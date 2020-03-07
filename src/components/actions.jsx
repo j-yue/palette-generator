@@ -5,18 +5,18 @@ import ImageArea from "./imageArea";
 
 const Actions = () => {
   return (
-    <Grid
-      container
-      direction="column"
-      justify="space-between"
-      alignItems="center"
-      style={{ height: "100vh", width: "30vw" }}
-    >
-      <Paper variant="outlined">
-        <ImageArea />
-        <ContrastRatio />
-      </Paper>
-    </Grid>
+    // <Grid
+    //   container
+    //   direction="column"
+    //   justify="space-between"
+    //   alignItems="center"
+    //   style={{ height: "100vh", width: "30vw" }}
+    // >
+    <Paper style={{ height: "100%", width: "100%" }}>
+      {/* <ImageArea />
+      <ContrastRatio /> */}
+    </Paper>
+    // </Grid>
   );
 };
 
