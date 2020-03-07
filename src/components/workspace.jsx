@@ -30,8 +30,8 @@ class Workspace extends Component {
         style={{ height: "100%", width: "100%" }}
         // style={{ height: "100vh", width: "70vw" }}
       >
-        {/* <CurrentImage handleImageLoad={this.handleImageLoad} />
-        <Palette dominant={this.state.dominant} palette={this.state.palette} /> */}
+        <CurrentImage handleImageLoad={this.handleImageLoad} />
+        {/* <Palette dominant={this.state.dominant} palette={this.state.palette} /> */}
       </Paper>
     );
   }

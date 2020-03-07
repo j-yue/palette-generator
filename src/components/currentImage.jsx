@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 import { Container } from "@material-ui/core";
 import ColorThief from "colorthief";
 import CloseButton from "./closeButton";
+import Image from "./image";
 import SelectionContext from "../context/selectionContext";
 
 const styles = {
@@ -29,23 +30,34 @@ const generatePalette = (ref, handleImageLoad) => {
   handleImageLoad(dominant, palette);
 };
 
+// const handleImageLoad = (dominant, palette) => {
+//   console.log(dominant, palette);
+// }
+
 const CurrentImage = ({ handleImageLoad }) => {
   const imageContext = useContext(SelectionContext);
   const imgEl = useRef(null);
+  console.log(imageContext);
 
   return (
-    <Container style={{ ...styles.container }}>
+    // <Container style={{ ...styles.container }}>
+    <Container style={{ width: "70%", height: "70%" }}>
       <CloseButton />
       <figure style={{ ...styles.image }}>
-        <img
+        <Image
+          src={imageContext.selectedImage}
+          handleLoad={imageContext.handleImageLoad}
+        />
+        {/* <img
           src={imageContext.selectedImage}
           style={{ ...styles.image }}
           ref={imgEl}
           onLoad={() => generatePalette(imgEl.current, handleImageLoad)}
-        />
+        /> */}
         <figcaption>{imageContext.selectedImage}</figcaption>
       </figure>
     </Container>
+    // </Container>
   );
 };
 

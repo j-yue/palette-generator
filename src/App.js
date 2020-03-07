@@ -26,6 +26,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      handlers: {
+        handleImageLoad: (dominant, palette) => {
+          this.setState({ dominantColor: dominant, paletteColors: palette });
+        }
+      },
       imageArray: [
         "images/sunConure.jpg",
         "images/kea.jpg",
@@ -37,7 +42,9 @@ class App extends Component {
         "images/kea.jpg",
         "images/sunConure.jpg"
       ],
-      selectedImage: "images/sunConure.jpg" //what if the images have the same name?
+      selectedImage: "images/sunConure.jpg", //what if imgs have same name
+      dominantColor: "",
+      paletteColors: ""
     };
     //colorthief needs access to dom element containing img
     this.imgRef = React.createRef();
@@ -46,6 +53,10 @@ class App extends Component {
   handleThumbnailClick(img) {
     this.setState({ selectedImage: img });
   }
+
+  // handleImageLoad = (dominant, palette) => {
+  //   this.setState({ dominantColor: dominant, paletteColors: palette });
+  // };
 
   render() {
     return (
@@ -66,7 +77,10 @@ class App extends Component {
         >
           <Grid item xs={8}>
             <SelectionContext.Provider
-              value={{ selectedImage: this.state.selectedImage }}
+              value={{
+                selectedImage: this.state.selectedImage,
+                handleImageLoad: this.state.handlers.handleImageLoad
+              }}
             >
               <Workspace />
             </SelectionContext.Provider>
