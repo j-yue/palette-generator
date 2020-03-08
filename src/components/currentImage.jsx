@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import Container from "@material-ui/core/Container";
 
 import SelectionContext from "../context/selectionContext";
-
 import CloseButton from "./closeButton";
 import Image from "./image";
+import withGrid from "./hoc/withGrid";
 
 const CurrentImage = () => {
   const imageContext = useContext(SelectionContext);
@@ -14,11 +13,11 @@ const CurrentImage = () => {
   ];
 
   return (
-    <Container style={{ width: "70%", height: "70%" }}>
+    <React.Fragment>
       <CloseButton />
       <Image src={selectedImage} handleLoad={handleImageLoad} />
-    </Container>
+    </React.Fragment>
   );
 };
 
-export default CurrentImage;
+export default withGrid(CurrentImage, "column", "space-evenly", "center");

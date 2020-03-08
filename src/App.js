@@ -42,7 +42,7 @@ class App extends Component {
         "images/kea.jpg",
         "images/sunConure.jpg"
       ],
-      selectedImage: "images/sunConure.jpg", //what if imgs have same name
+      selectedImage: "images/kea.jpg", //what if imgs have same name
       dominantColor: "",
       paletteColors: ""
     };
@@ -53,6 +53,16 @@ class App extends Component {
   handleThumbnailClick(img) {
     this.setState({ selectedImage: img });
   }
+
+  //use this instead of creating separate methods to change state
+  updateState = (key, value) => {
+    const stateKeys = Object.keys(this.state);
+    if (stateKeys.includes(key)) {
+      this.setState({ ...this.state, [key]: value });
+    } else {
+      console.log("invalid key");
+    }
+  };
 
   // handleImageLoad = (dominant, palette) => {
   //   this.setState({ dominantColor: dominant, paletteColors: palette });
@@ -82,7 +92,11 @@ class App extends Component {
                 handleImageLoad: this.state.handlers.handleImageLoad
               }}
             >
-              <Workspace />
+              <Workspace
+                updateState={this.updateState}
+                dominant={this.state.dominantColor}
+                palette={this.state.paletteColors}
+              />
             </SelectionContext.Provider>
           </Grid>
           <Grid item xs={4}>

@@ -1,40 +1,23 @@
-import React, { Component } from "react";
-import { Paper, Container, Grid } from "@material-ui/core/";
+import React from "react";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 import CurrentImage from "./currentImage";
 import Palette from "./palette";
 
-const styles = {
-  grid: {
-    minWidth: "100%",
-    minHeight: "100%",
-    maxHeight: "100%"
-  },
-  currentImage: {
-    width: "100%",
-    height: "70%",
-    maxHeight: "100%"
-  }
+const Workspace = ({ dominant, palette, updateState }) => {
+  return (
+    <Paper style={{ width: "100%", height: "100%" }}>
+      <Container style={{ width: "100%", height: "100%" }}>
+        <Grid item xs={12} style={{ height: "70%", width: "100%" }}>
+          <CurrentImage />
+        </Grid>
+        <Grid item xs={12} style={{ height: "30%", width: "100%" }}>
+          <Palette dominant={dominant} palette={palette} />
+        </Grid>
+      </Container>
+    </Paper>
+  );
 };
-
-class Workspace extends Component {
-  state = { dominant: "", palette: "" };
-
-  handleImageLoad = (dominant, palette) => {
-    this.setState({ dominant, palette });
-  };
-
-  render() {
-    return (
-      <Paper
-        variant="outlined"
-        style={{ height: "100%", width: "100%" }}
-        // style={{ height: "100vh", width: "70vw" }}
-      >
-        <CurrentImage handleImageLoad={this.handleImageLoad} />
-        {/* <Palette dominant={this.state.dominant} palette={this.state.palette} /> */}
-      </Paper>
-    );
-  }
-}
 
 export default Workspace;

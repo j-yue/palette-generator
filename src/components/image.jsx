@@ -6,7 +6,6 @@
 
 import React, { useRef } from "react";
 import ColorThief from "colorthief";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
 // given the current img provided by the image ref, use colorthief to find the
@@ -20,15 +19,20 @@ const Image = ({ src, handleLoad }) => {
   const imgRef = useRef(null);
 
   return (
-    <Container style={{ width: "75%", height: "75%", textAlign: "center" }}>
+    <React.Fragment>
       <img
         src={src}
         ref={imgRef}
         onLoad={() => handleLoad(...generatePalette(imgRef.current))}
-        style={{ maxWidth: "100%", maxHeight: "100%" }}
+        style={{
+          height: "40vh",
+          borderRadius: "8px",
+          boxShadow:
+            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+        }}
       />
       <Typography variant="subtitle1">{src}</Typography>
-    </Container>
+    </React.Fragment>
   );
 };
 

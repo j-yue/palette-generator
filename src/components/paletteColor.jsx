@@ -1,5 +1,8 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+
+import withRoundPadding from "./hoc/withRoundPadding";
+
 //match numbers > 9 to their hex value
 const decToHex = num => {
   let result = parseInt(num);
@@ -39,11 +42,24 @@ const toHex = rgb => {
   return result;
 };
 
-const style = {
-  display: "inline-block",
-  width: "10vh",
-  borderRadius: "10vh",
-  height: "10vh"
+// const style = {
+//   borderRadius: "2rem",
+//   minHeight: "2rem",
+//   minHeight: "2rem",
+//   minWidth: "2rem",
+//   maxWidth: "2rem"
+// };
+
+const circularStyle = radius => {
+  return {
+    borderRadius: "50%",
+    padding: "0",
+    margin: "0",
+    minHeight: radius,
+    minHeight: radius,
+    maxWidth: radius,
+    maxWidth: radius
+  };
 };
 
 const PaletteColor = ({ color }) => {
@@ -51,12 +67,17 @@ const PaletteColor = ({ color }) => {
   return (
     <Button
       variant="contained"
-      style={{ color: colorHex, backgroundColor: colorHex, ...style }}
+      style={{
+        color: colorHex,
+        backgroundColor: colorHex,
+        ...circularStyle("2rem")
+      }}
       onClick={() => console.log(color)}
     >
-      *
+      .
     </Button>
   );
 };
 
-export default PaletteColor;
+export default withRoundPadding(PaletteColor, "1rem");
+// export default PaletteColor;
