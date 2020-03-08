@@ -1,6 +1,4 @@
 import React from "react";
-
-import { Grid, Container } from "@material-ui/core";
 import withGrid from "./hoc/withGrid";
 import UploadButton from "./uploadButton";
 import UploadedImages from "./uploadedImages";

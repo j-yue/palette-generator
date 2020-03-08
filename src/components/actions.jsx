@@ -1,7 +1,8 @@
 import React from "react";
-import { Paper, Container, Grid } from "@material-ui/core/";
+import { Container, Typography } from "@material-ui/core/";
+
 import withGrid from "./hoc/withGrid";
-import ContrastRatio from "./contrastRatio";
+import ContrastRatioArea from "./contrastRatioArea";
 import ImageArea from "./imageArea";
 
 const Actions = () => {
@@ -13,8 +14,16 @@ const Actions = () => {
       <Container style={{ height: "65%" }}>
         <ImageArea />
       </Container>
-      <Container style={{ height: "30%", textAlign: "center", margin: "0" }}>
-        <ContrastRatio />
+      <Container
+        style={{
+          height: "30%",
+          width: "100%",
+          textAlign: "center",
+          margin: "0"
+        }}
+      >
+        <Typography variant="h6">Contrast Ratio</Typography>
+        <ContrastRatioArea />
       </Container>
       {/* </Paper> */}
     </React.Fragment>

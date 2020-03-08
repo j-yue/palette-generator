@@ -22,6 +22,7 @@ const Image = ({ src, handleLoad }) => {
     <React.Fragment>
       <img
         src={src}
+        alt="Current selection."
         ref={imgRef}
         onLoad={() => handleLoad(...generatePalette(imgRef.current))}
         style={{
