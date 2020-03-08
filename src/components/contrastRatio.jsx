@@ -1,6 +1,6 @@
 import React from "react";
-import CheckIcon from '@material-ui/icons/Check';
-import ClearIcon from '@material-ui/icons/Clear';
+import CheckIcon from "@material-ui/icons/Check";
+import ClearIcon from "@material-ui/icons/Clear";
 import Container from "@material-ui/core/Container";
 import withGrid from "./hoc/withGrid";
 
@@ -14,11 +14,7 @@ const ContrastRatio = (fg, bg) => {
   //     .then(({ ratio, AA }) => console.log(ratio, AA));
   return (
     <React.Fragment>
-      <div
-        >
-          8.59
-        </div>
-      </div>
+      <div>8.59</div>
     </React.Fragment>
   );
 };

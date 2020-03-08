@@ -9,6 +9,7 @@ import {
 // import { orange } from "@material-ui/core/colors";
 import ImagesContext from "./context/imagesContext";
 import SelectionContext from "./context/selectionContext";
+import ThumbnailContext from "./context/thumbnailContext";
 import ClipboardContext from "./context/clipboardContext";
 // import CurrentImage from "./components/currentImage";
 import Workspace from "./components/workspace";
@@ -29,36 +30,23 @@ class App extends Component {
       handlers: {
         handleImageLoad: (dominant, palette) => {
           this.setState({ dominantColor: dominant, paletteColors: palette });
+        },
+        handleThumbnailClick: src => {
+          this.setState({ selectedImage: src });
         }
       },
       imageArray: [
         "images/sunConure.jpg",
         "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/sunConure.jpg"
+        "images/hyacinth.jpg",
+        "images/lovebirds.jpg",
+        "images/scarlet.jpg",
+        "images/smallParrot.jpg",
+        "images/eclectus.jpg",
+        "images/feathers.jpg",
+        "images/hahns.jpg",
+        "images/lorries.jpg",
+        "images/blueAndGold.jpg"
       ],
       selectedImage: "images/kea.jpg", //what if imgs have same name
       dominantColor: "",
@@ -91,11 +79,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Grid
-          // nowrap
           container
-          // xs={10}
-          // xs={10}
-          // spacing={5}
           style={{
             width: "100vw",
             height: "100vh",
@@ -111,7 +95,6 @@ class App extends Component {
               }}
             >
               <Workspace
-                updateState={this.updateState}
                 dominant={this.state.dominantColor}
                 palette={this.state.paletteColors}
               />
@@ -121,9 +104,15 @@ class App extends Component {
             <ImagesContext.Provider
               value={{ imageArray: this.state.imageArray }}
             >
-              <Paper style={{ height: "100%" }}>
-                <Actions />
-              </Paper>
+              <ThumbnailContext.Provider
+                value={{
+                  handleThumbnailClick: this.state.handlers.handleThumbnailClick
+                }}
+              >
+                <Paper style={{ height: "100%" }}>
+                  <Actions />
+                </Paper>
+              </ThumbnailContext.Provider>
             </ImagesContext.Provider>
           </Grid>
         </Grid>

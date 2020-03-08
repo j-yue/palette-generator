@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import CurrentImage from "./currentImage";
 import Palette from "./palette";
 
-const Workspace = ({ dominant, palette, updateState }) => {
+const Workspace = ({ dominant, palette }) => {
   return (
     <Paper style={{ width: "100%", height: "100%" }}>
       <Container style={{ width: "100%", height: "100%" }}>
