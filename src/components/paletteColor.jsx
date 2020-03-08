@@ -42,13 +42,14 @@ const toHex = rgb => {
   return result;
 };
 
-// const style = {
-//   borderRadius: "2rem",
-//   minHeight: "2rem",
-//   minHeight: "2rem",
-//   minWidth: "2rem",
-//   maxWidth: "2rem"
-// };
+const copyToClipboard = color => {
+  const copyText = document.createElement("textarea");
+  document.body.appendChild(copyText);
+  copyText.value = color;
+  copyText.select();
+  document.execCommand("copy");
+  document.body.removeChild(copyText);
+};
 
 const circularStyle = radius => {
   return {
@@ -72,7 +73,7 @@ const PaletteColor = ({ color }) => {
         backgroundColor: colorHex,
         ...circularStyle("2rem")
       }}
-      onClick={() => console.log(color)}
+      onClick={() => copyToClipboard(toHex(color))}
     >
       .
     </Button>
@@ -80,4 +81,5 @@ const PaletteColor = ({ color }) => {
 };
 
 export default withRoundPadding(PaletteColor, "1rem");
+
 // export default PaletteColor;
