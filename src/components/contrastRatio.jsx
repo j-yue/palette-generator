@@ -4,18 +4,11 @@ import ColorInput from "./colorInput";
 
 const ContrastRatio = () => {
   return (
-    <Paper variant="outlined" style={{ height: "30vh" }}>
-      <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="center"
-      >
-        <h1>Contrast Ratio</h1>
-        <ColorInput name="Foreground" value="#888" />
-        <ColorInput name="Background" value="#CCC" />
-      </Grid>
-    </Paper>
+    <React.Fragment>
+      <h1>Contrast Ratio</h1>
+      <ColorInput name="Foreground" value="#888" />
+      <ColorInput name="Background" value="#CCC" />
+    </React.Fragment>
   );
 };
 

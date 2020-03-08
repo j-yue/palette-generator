@@ -1,17 +1,19 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import withGrid from "./hoc/withGrid";
 
 const styles = {
-  display: "block",
-  width: "50px",
-  height: "50px",
-  borderRadius: "50px"
+  width: "2rem",
+  height: "2rem",
+  borderRadius: "50%"
 };
 
 const ColorInput = ({ value, name }) => {
   return (
-    <Container>
+    <React.Fragment>
+      <Typography variant="body1">{name}</Typography>
       <label
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained"
         style={{
           backgroundColor: value,
           ...styles
@@ -22,11 +24,10 @@ const ColorInput = ({ value, name }) => {
           name={name}
           value={value}
           onChange={() => console.log("youre trying to change the color")}
-          style={{ visibility: "hidden" }}
+          hidden
         />
       </label>
-      <label>{name}</label>
-    </Container>
+    </React.Fragment>
   );
 };
 

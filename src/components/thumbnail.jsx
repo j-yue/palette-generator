@@ -3,8 +3,11 @@ import React from "react";
 
 const styles = {
   height: "10vh",
-  borderRadius: "1rem",
-  marginBottom: ".5rem"
+  maxWidth: "5vw",
+  borderRadius: "5px",
+  margin: "2.5px",
+  objectFit: "cover"
+  // marginBottom: "5px"
 };
 
 const Thumbnail = ({ src }) => {

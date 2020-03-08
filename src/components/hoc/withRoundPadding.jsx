@@ -1,5 +1,4 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
 
 const withRoundPadding = (Component, radius) => ({ ...props }) => {
   return (

@@ -1,26 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+// import withGrid from "./hoc/withGrid";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1)
-    }
-  },
-  input: {
-    display: "none"
-  }
-}));
-
-export default function UploadButtons() {
-  const classes = useStyles();
-
+const UploadButton = () => {
   return (
-    <div className={classes.root}>
+    <React.Fragment>
       <input
+        style={{ display: "none" }}
         accept="image/*"
-        className={classes.input}
         id="contained-button-file"
         multiple
         type="file"
@@ -35,6 +23,9 @@ export default function UploadButtons() {
           Upload Pictures
         </Button>
       </label>
-    </div>
+    </React.Fragment>
   );
-}
+};
+
+export default UploadButton;
+// export default withGrid(UploadButton, "row", "center", "center");

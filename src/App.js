@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CssBaseline, Grid } from "@material-ui/core";
+import { CssBaseline, Grid, Paper } from "@material-ui/core";
 import {
   createMuiTheme,
   // makeStyles,
@@ -32,6 +32,24 @@ class App extends Component {
         }
       },
       imageArray: [
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
+        "images/kea.jpg",
+        "images/sunConure.jpg",
         "images/sunConure.jpg",
         "images/kea.jpg",
         "images/sunConure.jpg",
@@ -103,7 +121,9 @@ class App extends Component {
             <ImagesContext.Provider
               value={{ imageArray: this.state.imageArray }}
             >
-              <Actions />
+              <Paper style={{ height: "100%" }}>
+                <Actions />
+              </Paper>
             </ImagesContext.Provider>
           </Grid>
         </Grid>
