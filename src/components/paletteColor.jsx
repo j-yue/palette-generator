@@ -26,6 +26,8 @@ const decToHex = num => {
     case 15:
       result = "F";
       break;
+    default:
+      break;
   }
   return result;
 };
@@ -57,8 +59,6 @@ const circularStyle = radius => {
     padding: "0",
     margin: "0",
     minHeight: radius,
-    minHeight: radius,
-    maxWidth: radius,
     maxWidth: radius
   };
 };
