@@ -13,7 +13,7 @@ const ContrastRatioArea = () => {
         <FgBg />
       </Grid>
       <Grid item xs={6}>
-        <ContrastRatio />
+        <ContrastRatio fg="000000" bg="FFFFFF" />
       </Grid>
     </React.Fragment>
   );
