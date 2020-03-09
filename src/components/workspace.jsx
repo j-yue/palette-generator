@@ -5,12 +5,13 @@ import Grid from "@material-ui/core/Grid";
 import CurrentImage from "./currentImage";
 import Palette from "./palette";
 
-const Workspace = ({ dominant, palette }) => {
+const Workspace = ({ currentImage, dominant, palette }) => {
   return (
     <Paper style={{ width: "100%", height: "100%" }}>
       <Container style={{ width: "100%", height: "100%" }}>
         <Grid item xs={12} style={{ height: "70%", width: "100%" }}>
-          <CurrentImage />
+          {/* <CurrentImage /> */}
+          {currentImage && <CurrentImage />}
         </Grid>
         <Grid item xs={12} style={{ height: "30%", width: "100%" }}>
           <Palette dominant={dominant} palette={palette} />

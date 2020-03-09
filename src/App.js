@@ -11,6 +11,7 @@ import ImagesContext from "./context/imagesContext";
 import SelectionContext from "./context/selectionContext";
 import ThumbnailContext from "./context/thumbnailContext";
 import ClipboardContext from "./context/clipboardContext";
+import CloseContext from "./context/closeContext";
 import UploadContext from "./context/uploadContext";
 // import CurrentImage from "./components/currentImage";
 import Workspace from "./components/workspace";
@@ -37,6 +38,12 @@ class App extends Component {
         },
         handleImageUpload: imgs => {
           this.setState({ images: { ...this.state.images, ...imgs } });
+        },
+        handleCloseClick: () => {
+          const key = this.state.selectedImageKey;
+          let images = this.state.images;
+          delete images[key];
+          this.setState({ images: images, selectedImageKey: null });
         }
       },
       images: {
@@ -99,10 +106,17 @@ class App extends Component {
                 images: this.state.images
               }}
             >
-              <Workspace
-                dominant={this.state.dominantColor}
-                palette={this.state.paletteColors}
-              />
+              <CloseContext.Provider
+                value={{
+                  handleCloseClick: this.state.handlers.handleCloseClick
+                }}
+              >
+                <Workspace
+                  currentImage={this.state.selectedImageKey}
+                  dominant={this.state.dominantColor}
+                  palette={this.state.paletteColors}
+                />
+              </CloseContext.Provider>
             </SelectionContext.Provider>
           </Grid>
           <Grid item xs={4}>
