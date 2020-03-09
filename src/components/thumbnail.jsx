@@ -10,7 +10,7 @@ const styles = {
   objectFit: "cover"
 };
 
-const Thumbnail = ({ src }) => {
+const Thumbnail = ({ src, name, imgKey }) => {
   const thumbnailContext = useContext(ThumbnailContext);
   const handleClick = thumbnailContext.handleThumbnailClick;
   return (
@@ -19,7 +19,7 @@ const Thumbnail = ({ src }) => {
         src={src}
         alt={`Thumbnail for ${src}.`}
         style={{ ...styles }}
-        onClick={() => handleClick(src)}
+        onClick={() => handleClick(imgKey)}
       />
     </React.Fragment>
   );

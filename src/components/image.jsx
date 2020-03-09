@@ -15,7 +15,7 @@ const generatePalette = img => {
   return [colorThief.getColor(img), colorThief.getPalette(img)];
 };
 
-const Image = ({ src, handleLoad }) => {
+const Image = ({ src, name, handleLoad }) => {
   const imgRef = useRef(null);
 
   return (
@@ -32,7 +32,7 @@ const Image = ({ src, handleLoad }) => {
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
         }}
       />
-      <Typography variant="subtitle1">{src}</Typography>
+      <Typography variant="subtitle1">{name}</Typography>
     </React.Fragment>
   );
 };

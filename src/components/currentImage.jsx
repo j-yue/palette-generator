@@ -7,15 +7,24 @@ import withGrid from "./hoc/withGrid";
 
 const CurrentImage = () => {
   const imageContext = useContext(SelectionContext);
-  const [selectedImage, handleImageLoad] = [
-    imageContext.selectedImage,
-    imageContext.handleImageLoad
-  ];
+  // const [selectedImageKey, handleImageLoad, images] = Object.values(
+  //   imageContext
+  // );
+  // const selectedImage = images[selectedImageKey];
+  // console.log(imageContext);
+  const { selectedImageKey, handleImageLoad, images } = imageContext;
+  // console.log(images[selectedImageKey]);
+  const current = images[selectedImageKey];
+  console.log(current.src);
 
   return (
     <React.Fragment>
       <CloseButton />
-      <Image src={selectedImage} handleLoad={handleImageLoad} />
+      <Image
+        src={current.src}
+        name={current.name}
+        handleLoad={handleImageLoad}
+      />
     </React.Fragment>
   );
 };

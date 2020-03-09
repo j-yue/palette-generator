@@ -11,6 +11,7 @@ import ImagesContext from "./context/imagesContext";
 import SelectionContext from "./context/selectionContext";
 import ThumbnailContext from "./context/thumbnailContext";
 import ClipboardContext from "./context/clipboardContext";
+import UploadContext from "./context/uploadContext";
 // import CurrentImage from "./components/currentImage";
 import Workspace from "./components/workspace";
 import Actions from "./components/actions";
@@ -31,24 +32,31 @@ class App extends Component {
         handleImageLoad: (dominant, palette) => {
           this.setState({ dominantColor: dominant, paletteColors: palette });
         },
-        handleThumbnailClick: src => {
-          this.setState({ selectedImage: src });
+        handleThumbnailClick: key => {
+          this.setState({ selectedImageKey: key });
+        },
+        handleImageUpload: imgs => {
+          this.setState({ images: { ...this.state.images, ...imgs } });
         }
       },
-      imageArray: [
-        "images/sunConure.jpg",
-        "images/kea.jpg",
-        "images/hyacinth.jpg",
-        "images/lovebirds.jpg",
-        "images/scarlet.jpg",
-        "images/smallParrot.jpg",
-        "images/eclectus.jpg",
-        "images/feathers.jpg",
-        "images/hahns.jpg",
-        "images/lorries.jpg",
-        "images/blueAndGold.jpg"
-      ],
-      selectedImage: "images/kea.jpg", //what if imgs have same name
+      images: {
+        demoPicture: {
+          src: "images/sunConure.jpg",
+          name: "images/sunConure.jpg",
+          imgKey: "demoPicture"
+        },
+        demoFeathers: {
+          src: "images/feathers.jpg",
+          name: "images/feathers.jpg",
+          imgKey: "demoFeathers"
+        },
+        demoLovebirds: {
+          src: "images/lovebirds.jpg",
+          name: "images/lovebirds.jpg",
+          imgKey: "demoLovebirds"
+        }
+      },
+      selectedImageKey: "demoPicture",
       dominantColor: "",
       paletteColors: ""
     };
@@ -70,10 +78,6 @@ class App extends Component {
     }
   };
 
-  // handleImageLoad = (dominant, palette) => {
-  //   this.setState({ dominantColor: dominant, paletteColors: palette });
-  // };
-
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -90,8 +94,9 @@ class App extends Component {
           <Grid item xs={8}>
             <SelectionContext.Provider
               value={{
-                selectedImage: this.state.selectedImage,
-                handleImageLoad: this.state.handlers.handleImageLoad
+                selectedImageKey: this.state.selectedImageKey,
+                handleImageLoad: this.state.handlers.handleImageLoad,
+                images: this.state.images
               }}
             >
               <Workspace
@@ -101,17 +106,21 @@ class App extends Component {
             </SelectionContext.Provider>
           </Grid>
           <Grid item xs={4}>
-            <ImagesContext.Provider
-              value={{ imageArray: this.state.imageArray }}
-            >
+            <ImagesContext.Provider value={{ images: this.state.images }}>
               <ThumbnailContext.Provider
                 value={{
                   handleThumbnailClick: this.state.handlers.handleThumbnailClick
                 }}
               >
-                <Paper style={{ height: "100%" }}>
-                  <Actions />
-                </Paper>
+                <UploadContext.Provider
+                  value={{
+                    handleImageUpload: this.state.handlers.handleImageUpload
+                  }}
+                >
+                  <Paper style={{ height: "100%" }}>
+                    <Actions />
+                  </Paper>
+                </UploadContext.Provider>
               </ThumbnailContext.Provider>
             </ImagesContext.Provider>
           </Grid>
