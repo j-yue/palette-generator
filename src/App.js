@@ -54,6 +54,11 @@ class App extends Component {
               background: fg
             }
           });
+        },
+        handleColorChange: (key, color) => {
+          this.setState({
+            colorInputs: { ...this.state.colorInputs, [key]: color }
+          });
         }
       },
       images: {
@@ -149,7 +154,8 @@ class App extends Component {
                     <ColorInputsContext.Provider
                       value={{
                         colorInputs: this.state.colorInputs,
-                        handleSwapClick: this.state.handlers.handleSwapClick
+                        handleSwapClick: this.state.handlers.handleSwapClick,
+                        handleColorChange: this.state.handlers.handleColorChange
                       }}
                     >
                       <Actions />

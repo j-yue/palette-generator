@@ -7,15 +7,23 @@ import ColorInputsContext from "../context/colorInputsContext";
 
 const FgBg = () => {
   const inputColors = useContext(ColorInputsContext);
-  const { colorInputs, handleSwapClick } = inputColors;
+  const { colorInputs, handleSwapClick, handleColorChange } = inputColors;
   const { foreground, background } = colorInputs;
   return (
     <React.Fragment>
-      <ColorInput name="Foreground" value={foreground} />
+      <ColorInput
+        name="Foreground"
+        value={foreground}
+        handleChange={handleColorChange}
+      />
       <IconButton aria-label="Swap colors" onClick={() => handleSwapClick()}>
         <SwapHorizIcon />
       </IconButton>
-      <ColorInput name="Background" value={background} />
+      <ColorInput
+        name="Background"
+        value={background}
+        handleChange={handleColorChange}
+      />
     </React.Fragment>
   );
 };

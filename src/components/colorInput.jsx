@@ -8,7 +8,7 @@ const styles = {
   borderRadius: "50%"
 };
 
-const ColorInput = ({ value, name }) => {
+const ColorInput = ({ value, name, handleChange }) => {
   return (
     <React.Fragment>
       <Typography variant="body1">{name}</Typography>
@@ -23,7 +23,7 @@ const ColorInput = ({ value, name }) => {
           type="color"
           name={name}
           value={value}
-          onChange={() => console.log("youre trying to change the color")}
+          onChange={e => handleChange(name.toLowerCase(), e.target.value)}
           hidden
         />
       </label>
