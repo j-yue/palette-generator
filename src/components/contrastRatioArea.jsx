@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import ColorInputsContext from "../context/colorInputsContext";
 import FgBg from "./fgBg";
 import ContrastRatio from "./contrastRatio";
 import withGrid from "./hoc/withGrid";
 import Grid from "@material-ui/core/Grid";
-// import Typography from "@material-ui/core/Typography";
-// import Container from "@material-ui/core/Container";
 
 const ContrastRatioArea = () => {
+  const { colorInputs, handleSwapClick, handleColorChange } = useContext(
+    ColorInputsContext
+  );
+  console.log(colorInputs);
   return (
     <React.Fragment>
       <Grid item xs={6}>
-        <FgBg />
+        <FgBg
+          colorInputs={colorInputs}
+          handleClick={handleSwapClick}
+          handleChange={handleColorChange}
+        />
       </Grid>
       <Grid item xs={6}>
-        <ContrastRatio fg="000000" bg="FFFFFF" />
+        <ContrastRatio colorInputs={colorInputs} />
       </Grid>
     </React.Fragment>
   );

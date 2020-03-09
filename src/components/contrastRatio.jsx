@@ -5,11 +5,14 @@ import Container from "@material-ui/core/Container";
 import withGrid from "./hoc/withGrid";
 
 //get ratio from webAIM api and render the result
-const ContrastRatio = ({ fg, bg }) => {
+const ContrastRatio = ({ colorInputs }) => {
   const [ratio, setRatio] = useState(null);
   const [icon, setIcon] = useState(null);
-  const URL = `https://webaim.org/resources/contrastchecker/?fcolor=${fg}&bcolor=${bg}&api`;
+  const [fg, bg] = Object.values(colorInputs);
 
+  const URL = `https://webaim.org/resources/contrastchecker/?fcolor=${
+    fg.split("#")[1]
+  }&bcolor=${bg.split("#")[1]}&api`;
   useEffect(() => {
     try {
       fetch(URL)

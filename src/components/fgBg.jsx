@@ -1,28 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
 import IconButton from "@material-ui/core/IconButton";
 import withGrid from "./hoc/withGrid";
 import ColorInput from "./colorInput";
-import ColorInputsContext from "../context/colorInputsContext";
 
-const FgBg = () => {
-  const inputColors = useContext(ColorInputsContext);
-  const { colorInputs, handleSwapClick, handleColorChange } = inputColors;
-  const { foreground, background } = colorInputs;
+const FgBg = ({ colorInputs, handleClick, handleChange }) => {
+  const [foreground, background] = Object.values(colorInputs);
+
   return (
     <React.Fragment>
       <ColorInput
         name="Foreground"
         value={foreground}
-        handleChange={handleColorChange}
+        handleChange={handleChange}
       />
-      <IconButton aria-label="Swap colors" onClick={() => handleSwapClick()}>
+
+      <IconButton aria-label="Swap colors" onClick={() => handleClick()}>
         <SwapHorizIcon />
       </IconButton>
+
       <ColorInput
         name="Background"
         value={background}
-        handleChange={handleColorChange}
+        handleChange={handleChange}
       />
     </React.Fragment>
   );
