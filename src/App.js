@@ -10,6 +10,7 @@ import {
 import ImagesContext from "./context/imagesContext";
 import SelectionContext from "./context/selectionContext";
 import ThumbnailContext from "./context/thumbnailContext";
+import ColorInputsContext from "./context/colorInputsContext";
 import ClipboardContext from "./context/clipboardContext";
 import CloseContext from "./context/closeContext";
 import UploadContext from "./context/uploadContext";
@@ -44,6 +45,15 @@ class App extends Component {
           let images = this.state.images;
           delete images[key];
           this.setState({ images: images, selectedImageKey: null });
+        },
+        handleSwapClick: () => {
+          const [fg, bg] = Object.values(this.state.colorInputs);
+          this.setState({
+            colorInputs: {
+              foreground: bg,
+              background: fg
+            }
+          });
         }
       },
       images: {
@@ -65,7 +75,11 @@ class App extends Component {
       },
       selectedImageKey: "demoPicture",
       dominantColor: "",
-      paletteColors: ""
+      paletteColors: "",
+      colorInputs: {
+        foreground: "#000000",
+        background: "#FFFFFF"
+      }
     };
     //colorthief needs access to dom element containing img
     this.imgRef = React.createRef();
@@ -132,7 +146,14 @@ class App extends Component {
                   }}
                 >
                   <Paper style={{ height: "100%" }}>
-                    <Actions />
+                    <ColorInputsContext.Provider
+                      value={{
+                        colorInputs: this.state.colorInputs,
+                        handleSwapClick: this.state.handlers.handleSwapClick
+                      }}
+                    >
+                      <Actions />
+                    </ColorInputsContext.Provider>
                   </Paper>
                 </UploadContext.Provider>
               </ThumbnailContext.Provider>
