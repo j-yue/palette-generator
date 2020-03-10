@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 
 import withRoundPadding from "./hoc/withRoundPadding";
+import CopyModeContext from "../context/copyModeContext";
 
 //match numbers > 9 to their hex value
 const decToHex = num => {
@@ -63,7 +64,15 @@ const circularStyle = radius => {
   };
 };
 
+const handleClick = (mode, color, callback) => {
+  console.log("hi");
+  if (mode === "clipboard") copyToClipboard(color);
+  if (mode === "foreground") callback("foreground", color);
+  if (mode === "background") callback("background", color);
+};
+
 const PaletteColor = ({ color }) => {
+  const { copyMode, handleColorChange } = useContext(CopyModeContext);
   const colorHex = toHex(color);
   return (
     <Button
@@ -71,9 +80,10 @@ const PaletteColor = ({ color }) => {
       style={{
         color: colorHex,
         backgroundColor: colorHex,
-        ...circularStyle("2rem")
+        // ...circularStyle("2rem")
+        borderRadius: "50%"
       }}
-      onClick={() => copyToClipboard(toHex(color))}
+      onClick={() => handleClick(copyMode, toHex(color), handleColorChange)}
     >
       .
     </Button>

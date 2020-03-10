@@ -137,7 +137,10 @@ class App extends Component {
               >
                 <CopyModeContext.Provider
                   value={{
-                    handleCopyModeClick: this.state.handlers.handleCopyModeClick
+                    copyMode: this.state.copyMode,
+                    handleCopyModeClick: this.state.handlers
+                      .handleCopyModeClick,
+                    handleColorChange: this.state.handlers.handleColorChange
                   }}
                 >
                   <Workspace
@@ -169,7 +172,14 @@ class App extends Component {
                         handleColorChange: this.state.handlers.handleColorChange
                       }}
                     >
-                      <Actions />
+                      <CopyModeContext.Provider
+                        value={{
+                          copyMode: this.state.copyMode,
+                          handleCopyClick: this.state.handlers.handleColorChange
+                        }}
+                      >
+                        <Actions />
+                      </CopyModeContext.Provider>
                     </ColorInputsContext.Provider>
                   </Paper>
                 </UploadContext.Provider>
