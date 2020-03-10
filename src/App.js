@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CssBaseline, Grid, Paper } from "@material-ui/core";
+import { CssBaseline, Grid, Paper, Typography } from "@material-ui/core";
 import {
   createMuiTheme,
   // makeStyles,
@@ -12,6 +12,7 @@ import SelectionContext from "./context/selectionContext";
 import ThumbnailContext from "./context/thumbnailContext";
 import ColorInputsContext from "./context/colorInputsContext";
 import ClipboardContext from "./context/clipboardContext";
+import CopyModeContext from "./context/copyModeContext";
 import CloseContext from "./context/closeContext";
 import UploadContext from "./context/uploadContext";
 // import CurrentImage from "./components/currentImage";
@@ -59,6 +60,9 @@ class App extends Component {
           this.setState({
             colorInputs: { ...this.state.colorInputs, [key]: color }
           });
+        },
+        handleCopyModeClick: mode => {
+          this.setState({ copyMode: mode });
         }
       },
       images: {
@@ -84,7 +88,8 @@ class App extends Component {
       colorInputs: {
         foreground: "#000000",
         background: "#FFFFFF"
-      }
+      },
+      copyMode: "clipboard"
     };
     //colorthief needs access to dom element containing img
     this.imgRef = React.createRef();
@@ -130,11 +135,17 @@ class App extends Component {
                   handleCloseClick: this.state.handlers.handleCloseClick
                 }}
               >
-                <Workspace
-                  currentImage={this.state.selectedImageKey}
-                  dominant={this.state.dominantColor}
-                  palette={this.state.paletteColors}
-                />
+                <CopyModeContext.Provider
+                  value={{
+                    handleCopyModeClick: this.state.handlers.handleCopyModeClick
+                  }}
+                >
+                  <Workspace
+                    currentImage={this.state.selectedImageKey}
+                    dominant={this.state.dominantColor}
+                    palette={this.state.paletteColors}
+                  />
+                </CopyModeContext.Provider>
               </CloseContext.Provider>
             </SelectionContext.Provider>
           </Grid>

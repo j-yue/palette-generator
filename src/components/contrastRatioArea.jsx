@@ -9,7 +9,7 @@ const ContrastRatioArea = () => {
   const { colorInputs, handleSwapClick, handleColorChange } = useContext(
     ColorInputsContext
   );
-  console.log(colorInputs);
+
   return (
     <React.Fragment>
       <Grid item xs={6}>
